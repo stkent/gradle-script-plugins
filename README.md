@@ -33,11 +33,45 @@ ext {
 }
 ```
 
-Add [the following lines](https://docs.gradle.org/current/userguide/plugins.html#sec:using_plugins) below the block above:
+## Android
+
+Make sure your `buildscript` and `repository` blocks contain the following information:
 
 ```groovy
-apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/bintray.gradle'
-apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/install.gradle'
+buildscript {
+    repositories {
+        jcenter()
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+    }
+}
+
+repositories {
+    jcenter()
+}
+```
+
+Add [the following lines](https://docs.gradle.org/current/userguide/plugins.html#sec:using_plugins) _below_ the extra properties defined above:
+
+```groovy
+apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/android-bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/android-install.gradle'
+```
+
+## Java
+
+Add the following lines _below_ the extra properties defined above:
+
+```groovy
+apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/android-bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/stkent/gradle-script-plugins/master/android-install.gradle'
 ```
 
 Enjoy responsibly.

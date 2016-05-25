@@ -1,0 +1,35 @@
+apply plugin: 'maven'
+
+group = libraryGroupId
+version = libraryVersion
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            groupId libraryGroupId
+            artifactId libraryArtifactId
+            version libraryVersion
+            packaging 'jar'
+
+            name libraryName
+            description libraryDescription
+            inceptionYear libraryInceptionYear
+            url libraryWebsiteUrl
+
+            licenses {
+                license {
+                    name libraryLicenseName
+                    url libraryLicenseUrl
+                }
+            }
+
+            developers {
+                developer {
+                    id developerId
+                    name developerName
+                    email developerEmail
+                }
+            }
+        }
+    }
+}
